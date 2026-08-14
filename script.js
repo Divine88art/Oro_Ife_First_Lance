@@ -61,17 +61,16 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
         alert("Erreur : Le widget KKiaPay n'a pas pu être chargé.");
         return;
     }
-
-    // Lancement du guichet KKiaPay
-    openKkiapayWidget({
-        amount: selectedPrice,
-        position: "center",
-        callback: "",
-        data: `Commande: ${selectedPlat}`,
-        phone: telephone,
-        name: nom,
-        key: "9b41eee62502b2decf60e28869c902091c1b53af"
-    });
+ 
+//KKiaPAy
+openKkiapayWidget({
+    amount: total,
+    position: "center",
+    callback: "",
+    data: "",
+    key: "9b41eee62502b2decf60e28869c902091c1b53af",
+    sandbox: true // Assure-toi que c'est sur true pour les tests
+});
 });
 
 // Écouteur officiel de succès KKiaPay
