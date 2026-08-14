@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saveurs du Chef - Commande Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. PAGE D'ACCUEIL (HERO SECTION) -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <span class="badge">👨‍🍳 Bienvenue aux Saveurs du Chef</span>
+            <h1>Une cuisine authentique, livrée ou à emporter</h1>
+            <p>Commandez vos plats préférés en quelques clics et gagnez du temps.</p>
+            <button id="startBtn" class="btn-primary">Découvrir le Menu & Commander 🍲</button>
+        </div>
+    </section>
+
+    <!-- 2. SECTION FORMULAIRE & MENU (MASQUÉE AU DÉPART) -->
+    <section id="booking" class="booking-section hidden">
+        <div class="container">
+            <header>
+                <h2>Votre Commande Express</h2>
+                <p>Sélectionnez vos plats et validez l'heure de retrait</p>
+            </header>
+
+            <form id="orderForm">
+                <!-- Choix des plats (Cartes dynamiques) -->
+                <div class="form-group">
+                    <label>Choisissez vos plats</label>
+                    <div class="menu-grid">
+                        <div class="menu-card" data-name="Plat du Jour" data-price="3500">
+                            <h3>Plat du Jour 🍲</h3>
+                            <p class="description">Recette traditionnelle fraîchement préparée.</p>
+                            <span class="price">3 500 FCFA</span>
+                        </div>
+                        <div class="menu-card" data-name="Menu Gourmand" data-price="5000">
+                            <h3>Menu Gourmand 🍗</h3>
+                            <p class="description">Accompagnement au choix + boisson offerte.</p>
+                            <span class="price">5 000 FCFA</span>
+                        </div>
+                        <div class="menu-card" data-name="Spécialité Maison" data-price="6500">
+                            <h3>Spécialité Maison 👑</h3>
+                            <p class="description">Le chef-d'œuvre de notre cuisine.</p>
+                            <span class="price">6 500 FCFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informations Client -->
+                <div class="form-group">
+                    <label for="nom">Nom Complet</label>
+                    <input type="text" id="nom" placeholder="Ex: Camille DuFleuve" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Numéro WhatsApp</label>
+                    <input type="tel" id="telephone" placeholder="Ex: +229 01 98 56 78 98" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="heure">Heure de retrait souhaitée</label>
+                    <input type="time" id="heure" required>
+                </div>
+
+                <!-- Total dynamique -->
+                <div class="total-box">
+                    <span>Total estimé :</span>
+                    <strong id="totalAmount">0 FCFA</strong>
+                </div>
+
+                <button type="submit" class="btn-submit">Valider via WhatsApp 🚀</button>
+            </form>
+        </div>
+    </section>
+<!-- Script officiel KKiaPay -->
+<script src="https://cdn.kkiapay.me/kkiapay-widget/v2/kkiapay.js"></script>
+    <!-- Ton script JavaScript local -->
+    <script src="script.js"></script>
+</body>
+</html>
