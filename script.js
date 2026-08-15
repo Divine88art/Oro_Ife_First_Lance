@@ -71,7 +71,7 @@ function lancerPaiement(total) {
         amount: total,
         position: "center",
         data: "Commande Resto_Express",
-        key: "9b41eee62502b2decf60e28869c902091c1b53af",
+        key: "377de68097c711f1b6fc09343ab4492d",
         sandbox: true
     });
 }
