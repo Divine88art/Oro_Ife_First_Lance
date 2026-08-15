@@ -62,17 +62,46 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
         return;
     }
  
-//KKiaPAy
-openKkiapayWidget({
-    amount: total,
-    position: "center",
-    callback: "",
-    data: "",
-    key: "9b41eee62502b2decf60e28869c902091c1b53af",
-    sandbox: true // Assure-toi que c'est sur true pour les tests
-});
+// KKiaPay
+// Fonction pour lancer le paiement
+function lancerPaiement(total) {
+    openKkiapayWidget({
+        amount: total,
+        position: "center",
+        data: "Commande Resto_Express",
+        key: "9b41eee62502b2decf60e28869c902091c1b53af",
+        sandbox: true
+    });
+}
+
+// Écouteur déclenché automatiquement par KKiaPay en cas de succès
+window.addEventListener('successTransaction', function (response) {
+    const transactionId = response.detail.transactionId;
+    console.log("Paiement validé ! ID :", transactionId);
+
+    // Étape suivante : Afficher un message de succès
+    afficherConfirmationCommande(transactionId);
+    
+    // Envoyer les infos au backend si besoin
+    if (typeof envoyerCommandeAuServeur === 'function') {
+        envoyerCommandeAuServeur(transactionId);
+    }
 });
 
+// Fonction d'affichage du message de confirmation
+function afficherConfirmationCommande(id) {
+    const conteneur = document.querySelector("#checkout-container"); // Remplace si ton ID HTML est différent
+    if (conteneur) {
+        conteneur.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <h2 style="color: #27ae60;">Commande validée avec succès ! 🎉</h2>
+                <p>Merci pour votre commande. Référence de paiement : <strong>${id}</strong></p>
+                <p>Votre plat est en cours de préparation dans la cuisine.</p>
+                <button onclick="location.reload()" style="background: #e67e22; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px;">Commander à nouveau</button>
+            </div>
+        `;
+    }
+}
 // Écouteur officiel de succès KKiaPay
 if (typeof addSuccessListener !== "undefined") {
     addSuccessListener((response) => {
