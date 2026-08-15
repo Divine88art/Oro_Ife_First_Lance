@@ -112,14 +112,14 @@ if (typeof addSuccessListener !== "undefined") {
         const telephone = localStorage.getItem('resto_tel') || "";
         const numeroResto = "2290148264516";
 
-        const messageTexte = 
-            `🍲 Une nouvelle commande PAYÉE a été passée :\n\n` +
-            `✅ *Statut :* Paiement validé par KKiaPay\n` +
-            `👤 *Nom :* ${nom}\n` +
-            `📞 *Téléphone :* ${telephone}\n` +
-            `🆔 *Transaction ID :* ${response.transactionId || "Validé"}\n\n` +
-            `Merci de préparer la commande !`;
+const messageTexte = `Une nouvelle commande payée a été passée :
 
+*Statut :* Paiement valide par KKiaPay
+*Nom :* ${nom}
+*Telephone :* ${telephone}
+*Transaction ID :* ${response.transactionId || "Valide"}
+
+Merci de preparer la commande !`;
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
         
         // Redirection directe pour éviter le blocage pop-up
