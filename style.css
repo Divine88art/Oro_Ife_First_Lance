@@ -193,4 +193,15 @@ input {
     color: #fff;
     font-weight: 700;
     cursor: pointer;
+.site-logo {
+    height: 60px; /* Ajuste la hauteur selon la taille de ton header */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4)); /* Fait ressortir le doré */
+    transition: transform 0.3s ease;
 }
+
+.site-logo:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
