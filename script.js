@@ -117,7 +117,7 @@ if (typeof addSuccessListener !== "undefined") {
             "\u{1F4B0} *Transaction ID :* " + (response.transactionId || "Validé") + "\n\n" +
             "Merci de préparer la commande !";
 
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
         window.open(whatsappUrl, '_blank');
     });
 }
