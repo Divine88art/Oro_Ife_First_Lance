@@ -97,11 +97,14 @@ function afficherConfirmationCommande(id) {
                 <h2 style="color: #27ae60;">Commande validée avec succès ! 🎉</h2>
                 <p>Merci pour votre commande. Référence de paiement : <strong>${id}</strong></p>
                 <p>Votre plat est en cours de préparation dans la cuisine.</p>
-                <button onclick="location.reload()" style="background: #e67e22; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px;">Commander à nouveau</button>
+                <button onclick="location.reload()" style="background: #e67e22; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                    Nouvelle commande
+                </button>
             </div>
         `;
     }
 }
+
 // Écouteur officiel de succès KKiaPay
 if (typeof addSuccessListener !== "undefined") {
     addSuccessListener((response) => {
@@ -110,14 +113,16 @@ if (typeof addSuccessListener !== "undefined") {
         const numeroResto = "2290148264516";
 
         const messageTexte = 
-            "Bonjour ! \u{1F372} Une nouvelle commande PAYÉE a été passée :\n\n" +
-            "\u{2705} *Statut :* Paiement validé par KKiaPay\n" +
-            "\u{1F464} *Nom :* " + nom + "\n" +
-            "\u{1F4DE} *Téléphone :* " + telephone + "\n" +
-            "\u{1F4B0} *Transaction ID :* " + (response.transactionId || "Validé") + "\n\n" +
-            "Merci de préparer la commande !";
+            `🍲 Une nouvelle commande PAYÉE a été passée :\n\n` +
+            `✅ *Statut :* Paiement validé par KKiaPay\n` +
+            `👤 *Nom :* ${nom}\n` +
+            `📞 *Téléphone :* ${telephone}\n` +
+            `🆔 *Transaction ID :* ${response.transactionId || "Validé"}\n\n` +
+            `Merci de préparer la commande !`;
 
-const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
+        
+        // Redirection directe pour éviter le blocage pop-up
+        window.location.href = whatsappUrl;
     });
 }
