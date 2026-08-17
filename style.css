@@ -57,7 +57,7 @@ body {
     box-shadow: 0 10px 25px rgba(255, 126, 95, 0.4);
 }
 
-/* SECTION COMMANDE & SEPARATION DES BLOCS GLASS */
+/* SECTION COMMANDE & SEPARATION DES CARTE GLASS */
 .booking-section {
     min-height: 100vh;
     padding: 40px 15px;
@@ -68,7 +68,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 35px; /* Séparation nette entre le menu et le formulaire */
+    gap: 35px;
 }
 
 .glass-card {
@@ -97,14 +97,11 @@ body {
     font-size: 0.9rem;
 }
 
-/* ==========================================
-   GRILLE & CARTES PRODUITS (3x3 PERMANENT)
-   ========================================== */
+/* GRILLE & CARTES PRODUITS (FORCÉE 3x3 PARTOUT) */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) !important; /* Force les 3 colonnes partout */
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 12px;
-    padding: 10px 0;
 }
 
 .dish-card {
@@ -124,7 +121,7 @@ body {
 
 .dish-img {
     width: 100%;
-    height: 120px;
+    height: 110px;
     object-fit: cover;
     display: block;
 }
@@ -132,29 +129,10 @@ body {
 .dish-card h3 {
     padding: 8px 4px;
     color: #f8fafc;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
-/* AJUSTEMENT MOBILE SPÉCIFIQUE (ÉCRANS < 600px) */
-@media (max-width: 600px) {
-    .glass-card {
-        padding: 15px 10px; /* Réduit le padding du conteneur pour maximiser l'espace */
-    }
-
-    .menu-grid {
-        gap: 8px; /* Espacement réduit entre les vignettes */
-    }
-
-    .dish-img {
-        height: 75px; /* Hauteur compacte pour garder un format carré/élégant */
-    }
-
-    .dish-card h3 {
-        font-size: 0.75rem; /* Réduction du texte pour éviter la coupure du titre */
-        padding: 5px 2px;
-    }
-}
 /* FORMULAIRE & TOTAL */
 .form-group {
     margin-bottom: 15px;
@@ -204,7 +182,7 @@ input, select {
     cursor: pointer;
 }
 
-/* MODALE ZOOM & GLASSMORPHISM (FIX) */
+/* MODALE ZOOM & GLASSMORPHISM */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -279,19 +257,23 @@ input, select {
     width: auto;
 }
 
-/* ADAPTATION MOBILE EN GRILLE (2 COLONNES MINIMUM) */
+/* ADAPTATION MOBILE EN 3x3 COMPACT */
 @media (max-width: 600px) {
+    .glass-card {
+        padding: 15px 10px;
+    }
+
     .menu-grid {
-        grid-template-columns: repeat(2, 1fr); /* Garde 2 colonnes même sur mobile */
-        gap: 10px;
+        gap: 8px;
     }
 
     .dish-img {
-        height: 85px; /* Très compact pour mobile */
+        height: 75px;
     }
 
     .dish-card h3 {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+        padding: 5px 2px;
     }
 }
 
