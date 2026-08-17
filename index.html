@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- 1. PAGE D'ACCUEIL (HERO SECTION) -->
+    <!-- 1. HERO SECTION -->
     <section id="hero" class="hero-section">
         <div class="hero-content">
             <span class="badge">👨‍🍳 Bienvenue à ORO IFE Foods</span>
@@ -19,114 +19,124 @@
         </div>
     </section>
 
-    <!-- 2. SECTION FORMULAIRE & MENU -->
+    <!-- 2. SECTION COMMANDE -->
     <section id="booking" class="booking-section hidden">
-        <div class="container" id="checkout-container">
-            <header>
-                <h2>Votre Commande Express</h2>
-                <p>Sélectionnez vos plats et validez l'heure de retrait</p>
-            </header>
+        <div class="booking-wrapper" id="checkout-container">
+            
+            <!-- BLOC 1 : CARTE MENU SEPARÉE -->
+            <div class="glass-card menu-section">
+                <header class="section-header">
+                    <h2>Nos Spécialités</h2>
+                    <p>Cliquez sur un plat pour choisir la taille et personnaliser</p>
+                </header>
 
-            <!-- SECTION MENU 3x3 -->
-            <section class="menu-container">
-                <h2>Nos Spécialités</h2>
                 <div class="menu-grid">
-                    <div class="dish-card menu-card" onclick="openDishModal('attieke')">
+                    <div class="dish-card" onclick="openDishModal('attieke')">
                         <img src="attieke.jpg" alt="Attiékè" class="dish-img">
                         <h3>Attiékè</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('brunch')">
+                    <div class="dish-card" onclick="openDishModal('brunch')">
                         <img src="brunch.jpg" alt="Pain Brunch" class="dish-img">
                         <h3>Pain Brunch</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('spaghetti')">
+                    <div class="dish-card" onclick="openDishModal('spaghetti')">
                         <img src="spaghetti.jpg" alt="Spaghetti" class="dish-img">
                         <h3>Spaghetti</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('salade')">
+                    <div class="dish-card" onclick="openDishModal('salade')">
                         <img src="salade.jpg" alt="Salade" class="dish-img">
                         <h3>Salade</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('jollof')">
+                    <div class="dish-card" onclick="openDishModal('jollof')">
                         <img src="jollof.jpg" alt="Riz jollof" class="dish-img">
                         <h3>Riz jollof</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('grillades')">
+                    <div class="dish-card" onclick="openDishModal('grillades')">
                         <img src="grillades.jpg" alt="Grillades" class="dish-img">
                         <h3>Grillades</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('tchiep')">
+                    <div class="dish-card" onclick="openDishModal('tchiep')">
                         <img src="tchiep.jpg" alt="Tchiep" class="dish-img">
                         <h3>Tchiep</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('chawarma')">
+                    <div class="dish-card" onclick="openDishModal('chawarma')">
                         <img src="chawarma.jpg" alt="Chawarma" class="dish-img">
                         <h3>Chawarma</h3>
                     </div>
-                    <div class="dish-card menu-card" onclick="openDishModal('jus')">
+                    <div class="dish-card" onclick="openDishModal('jus')">
                         <img src="jus.jpg" alt="Jus Natures" class="dish-img">
                         <h3>Jus Natures</h3>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- FORMULAIRE COORDONNÉES CLIENT -->
-            <form id="orderForm">
-                <div class="form-group">
-                    <label for="nom">Nom Complet</label>
-                    <input type="text" id="nom" placeholder="Ex: Camille DuFleuve" required>
-                </div>
+            <!-- BLOC 2 : CARTE FORMULAIRE & VALIADTION -->
+            <div class="glass-card form-section">
+                <header class="section-header">
+                    <h2>Vos Informations</h2>
+                    <p>Finalisez votre réservation et heure de retrait</p>
+                </header>
 
-                <div class="form-group">
-                    <label for="telephone">Numéro WhatsApp</label>
-                    <input type="tel" id="telephone" placeholder="Ex: 0198567898" required>
-                </div>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="nom">Nom Complet</label>
+                        <input type="text" id="nom" placeholder="Ex: Camille DuFleuve" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="heure">Heure de retrait souhaitée</label>
-                    <input type="time" id="heure" required>
-                </div>
+                    <div class="form-group">
+                        <label for="telephone">Numéro WhatsApp</label>
+                        <input type="tel" id="telephone" placeholder="Ex: 0198567898" required>
+                    </div>
 
-                <div class="total-box">
-                    <span>Total à payer :</span>
-                    <strong id="totalAmount">0 FCFA</strong>
-                </div>
+                    <div class="form-group">
+                        <label for="heure">Heure de retrait souhaitée</label>
+                        <input type="time" id="heure" required>
+                    </div>
 
-                <button type="submit" class="btn-submit">Payer & Valider la Commande 💳</button>
-            </form>
+                    <div class="total-box">
+                        <span>Total à payer :</span>
+                        <strong id="totalAmount">0 FCFA</strong>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Payer & Valider la Commande 💳</button>
+                </form>
+            </div>
+
         </div>
     </section>
 
-    <!-- MODAL DE SÉLECTION DE PLAT -->
-    <div id="dishModal" class="modal" style="display:none;">
-        <div class="modal-content">
+    <!-- 3. MODAL POPUP AVEC EFFET ZOOM & GLASSMORPHISM -->
+    <div id="dishModal" class="modal-overlay" style="display:none;">
+        <div class="modal-card">
             <span class="close-btn" onclick="closeDishModal()">&times;</span>
             <h2 id="modalDishName">Nom du plat</h2>
-            <p id="modalDishDesc">Description du plat...</p>
+            <p id="modalDishDesc" class="modal-desc">Description du plat...</p>
 
-            <label for="priceSelect">Choisissez un format :</label>
-            <select id="priceSelect" onchange="toggleCustomPrice()">
-                <option value="1500">Format 1 500 F CFA</option>
-                <option value="2000">Format 2 000 F CFA</option>
-                <option value="2500">Format 2 500 F CFA</option>
-                <option value="3000">Format 3 000 F CFA</option>
-                <option value="3500">Format 3 500 F CFA</option>
-                <option value="4000">Format 4 000 F CFA</option>
-                <option value="custom">Montant personnalisé (min. 1 000 F)</option>
-            </select>
+            <div class="modal-body">
+                <label for="priceSelect">Choisissez un format :</label>
+                <select id="priceSelect" onchange="toggleCustomPrice()">
+                    <option value="1500">Format 1 500 F CFA</option>
+                    <option value="2000">Format 2 000 F CFA</option>
+                    <option value="2500">Format 2 500 F CFA</option>
+                    <option value="3000">Format 3 000 F CFA</option>
+                    <option value="3500">Format 3 500 F CFA</option>
+                    <option value="4000">Format 4 000 F CFA</option>
+                    <option value="custom">Montant personnalisé (min. 1 000 F)</option>
+                </select>
 
-            <input type="number" id="customPriceInput" placeholder="Montant en FCFA" min="1000" style="display:none;">
+                <input type="number" id="customPriceInput" placeholder="Montant en FCFA" min="1000" style="display:none;">
 
-            <div class="drink-option">
-                <label><input type="checkbox" id="addDrink"> Ajouter un Jus Nature (+250 F CFA/bouteille)</label>
-                <input type="number" id="drinkQty" value="1" min="1" style="display:none;">
+                <div class="drink-option">
+                    <label><input type="checkbox" id="addDrink"> Ajouter un Jus Nature (+250 F CFA/bouteille)</label>
+                    <input type="number" id="drinkQty" value="1" min="1" style="display:none;">
+                </div>
             </div>
 
-            <button type="button" onclick="addToCart()">Ajouter au panier 🛒</button>
+            <button type="button" class="btn-add-cart" onclick="addToCart()">Ajouter au panier 🛒</button>
         </div>
     </div>
 
-    <!-- SCRIPTS JS -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.kkiapay.me/k.js"></script>
     <script src="script.js"></script>
 

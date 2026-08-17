@@ -146,7 +146,7 @@ if (typeof addSuccessListener !== "undefined") {
         const nom = localStorage.getItem('resto_nom') || "Client";
         const telephone = localStorage.getItem('resto_tel') || "";
         const heure = document.getElementById('heure').value || "Non précisée";
-        const numeroResto = "2290148264516";
+        const numeroResto = "2290197373849";
 
         // Détails du panier
         let recapPanier = currentCart.map(item => `- ${item.name} : ${item.price} FCFA`).join('\n');
