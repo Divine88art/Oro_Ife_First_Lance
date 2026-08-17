@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oro Ife Foods - Commande Express</title>
-    <link rel="icon" type="image/svg" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,66 +19,59 @@
         </div>
     </section>
 
-    <!-- 2. SECTION FORMULAIRE & MENU (MASQUÉE AU DÉPART) -->
+    <!-- 2. SECTION FORMULAIRE & MENU -->
     <section id="booking" class="booking-section hidden">
-        <div class="container">
+        <div class="container" id="checkout-container">
             <header>
                 <h2>Votre Commande Express</h2>
                 <p>Sélectionnez vos plats et validez l'heure de retrait</p>
             </header>
 
+            <!-- SECTION MENU 3x3 -->
+            <section class="menu-container">
+                <h2>Nos Spécialités</h2>
+                <div class="menu-grid">
+                    <div class="dish-card menu-card" onclick="openDishModal('attieke')">
+                        <img src="attieke.jpg" alt="Attiékè" class="dish-img">
+                        <h3>Attiékè</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('brunch')">
+                        <img src="brunch.jpg" alt="Pain Brunch" class="dish-img">
+                        <h3>Pain Brunch</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('spaghetti')">
+                        <img src="spaghetti.jpg" alt="Spaghetti" class="dish-img">
+                        <h3>Spaghetti</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('salade')">
+                        <img src="salade.jpg" alt="Salade" class="dish-img">
+                        <h3>Salade</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('jollof')">
+                        <img src="jollof.jpg" alt="Riz jollof" class="dish-img">
+                        <h3>Riz jollof</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('grillades')">
+                        <img src="grillades.jpg" alt="Grillades" class="dish-img">
+                        <h3>Grillades</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('tchiep')">
+                        <img src="tchiep.jpg" alt="Tchiep" class="dish-img">
+                        <h3>Tchiep</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('chawarma')">
+                        <img src="chawarma.jpg" alt="Chawarma" class="dish-img">
+                        <h3>Chawarma</h3>
+                    </div>
+                    <div class="dish-card menu-card" onclick="openDishModal('jus')">
+                        <img src="jus.jpg" alt="Jus Natures" class="dish-img">
+                        <h3>Jus Natures</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORMULAIRE COORDONNÉES CLIENT -->
             <form id="orderForm">
-	<section class="menu-container">
-    	    <h2>Nos Spécialités</h2>
-    	    <div class="menu-grid">
-        <!-- Plat 1 -->
-        <div class="dish-card" onclick="openDishModal('attieke')">
-            <img src="attieke.jpg" alt="Attiékè" class="dish-img">
-            <h3>Attiékè</h3>
-        </div>
-        <!-- Plat 2 -->
-        <div class="dish-card" onclick="openDishModal('brunch')">
-            <img src="brunch.jpg" alt="Pain Brunch" class="dish-img">
-            <h3>Pain Brunch</h3>
-        </div>
-        <!-- Plat 3 -->
-        <div class="dish-card" onclick="openDishModal('spaghetti')">
-            <img src="spaghetti.jpg" alt="Spaghetti" class="dish-img">
-            <h3>Spaghetti</h3>
-        </div>
-        <!-- Plat 4 -->
-        <div class="dish-card" onclick="openDishModal('salade')">
-            <img src="salade.jpg" alt="Salade" class="dish-img">
-            <h3>Salade</h3>
-        </div>
-        <!-- Plat 5 -->
-        <div class="dish-card" onclick="openDishModal('jollof')">
-            <img src="jollof.jpg" alt="Riz jollof" class="dish-img">
-            <h3>Riz jollof</h3>
-        </div>
-        <!-- Plat 6 -->
-        <div class="dish-card" onclick="openDishModal('grillades')">
-            <img src="grillades.jpg" alt="Grillades" class="dish-img">
-            <h3>Grillades</h3>
-        </div>
-        <!-- Plat 7 -->
-        <div class="dish-card" onclick="openDishModal('tchiep')">
-            <img src="tchiep.jpg" alt="Tchiep" class="dish-img">
-            <h3>Tchiep</h3>
-        </div>
-        <!-- Plat 8 -->
-        <div class="dish-card" onclick="openDishModal('chawarma')">
-            <img src="chawarma.jpg" alt="Chawarma" class="dish-img">
-            <h3>Chawarma</h3>
-        </div>
-        <!-- Plat 9 -->
-        <div class="dish-card" onclick="openDishModal('jus')">
-            <img src="jus.jpg" alt="Jus Natures" class="dish-img">
-            <h3>Jus Natures</h3>
-        </div>
-    </div>
-</section>
-                <!-- Informations Client -->
                 <div class="form-group">
                     <label for="nom">Nom Complet</label>
                     <input type="text" id="nom" placeholder="Ex: Camille DuFleuve" required>
@@ -86,7 +79,7 @@
 
                 <div class="form-group">
                     <label for="telephone">Numéro WhatsApp</label>
-                    <input type="tel" id="telephone" placeholder="Ex: +229 01 98 56 78 98" required>
+                    <input type="tel" id="telephone" placeholder="Ex: 0198567898" required>
                 </div>
 
                 <div class="form-group">
@@ -94,80 +87,48 @@
                     <input type="time" id="heure" required>
                 </div>
 
-                <!-- Total dynamique -->
                 <div class="total-box">
-                    <span>Total estimé :</span>
+                    <span>Total à payer :</span>
                     <strong id="totalAmount">0 FCFA</strong>
                 </div>
 
-                <button type="submit" class="btn-submit">Valider via WhatsApp 🚀</button>
+                <button type="submit" class="btn-submit">Payer & Valider la Commande 💳</button>
             </form>
         </div>
     </section>
-<!-- Script officiel KKiaPay direct depuis le dashboard -->
+
+    <!-- MODAL DE SÉLECTION DE PLAT -->
+    <div id="dishModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDishModal()">&times;</span>
+            <h2 id="modalDishName">Nom du plat</h2>
+            <p id="modalDishDesc">Description du plat...</p>
+
+            <label for="priceSelect">Choisissez un format :</label>
+            <select id="priceSelect" onchange="toggleCustomPrice()">
+                <option value="1500">Format 1 500 F CFA</option>
+                <option value="2000">Format 2 000 F CFA</option>
+                <option value="2500">Format 2 500 F CFA</option>
+                <option value="3000">Format 3 000 F CFA</option>
+                <option value="3500">Format 3 500 F CFA</option>
+                <option value="4000">Format 4 000 F CFA</option>
+                <option value="custom">Montant personnalisé (min. 1 000 F)</option>
+            </select>
+
+            <input type="number" id="customPriceInput" placeholder="Montant en FCFA" min="1000" style="display:none;">
+
+            <div class="drink-option">
+                <label><input type="checkbox" id="addDrink"> Ajouter un Jus Nature (+250 F CFA/bouteille)</label>
+                <input type="number" id="drinkQty" value="1" min="1" style="display:none;">
+            </div>
+
+            <button type="button" onclick="addToCart()">Ajouter au panier 🛒</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS JS -->
     <script src="https://cdn.kkiapay.me/k.js"></script>
-
-    <!-- Ton script JavaScript local -->
     <script src="script.js"></script>
-<!-- Modal de sélection de plat -->
-<div id="dishModal" class="modal" style="display:none;">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeDishModal()">&times;</span>
-        <h2 id="modalDishName">Nom du plat</h2>
-        <p id="modalDishDesc">Description du plat...</p>
-        
-        <!-- Formats prédéfinis -->
-        <label>Choisissez un format :</label>
-        <select id="priceSelect" onchange="toggleCustomPrice()">
-            <option value="1500">Format 1 500 F CFA</option>
-            <option value="2000">Format 2 000 F CFA</option>
-            <option value="2500">Format 2 500 F CFA</option>
-            <option value="3000">Format 3 000 F CFA</option>
-            <option value="3500">Format 3 500 F CFA</option>
-            <option value="4000">Format 4 000 F CFA</option>
-            <option value="custom">Montant personnalisé (min. 1 000 F)</option>
-        </select>
 
-        <input type="number" id="customPriceInput" placeholder="Montant en FCFA" min="1000" style="display:none;">
-
-        <!-- Option Jus Natures -->
-        <div class="drink-option">
-            <label><input type="checkbox" id="addDrink"> Ajouter un Jus Nature (+250 F CFA/bouteille)</label>
-            <input type="number" id="drinkQty" value="1" min="1" style="display:none;">
-        </div>
-
-        <button onclick="addToCart()">Ajouter au panier 🛒</button>
-    </div>
-</div>
-<!-- Modal de sélection de plat -->
-<div id="dishModal" class="modal" style="display:none;">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeDishModal()">&times;</span>
-        <h2 id="modalDishName">Nom du plat</h2>
-        <p id="modalDishDesc">Description du plat...</p>
-        
-        <!-- Formats prédéfinis -->
-        <label>Choisissez un format :</label>
-        <select id="priceSelect" onchange="toggleCustomPrice()">
-            <option value="1500">Format 1 500 F CFA</option>
-            <option value="2000">Format 2 000 F CFA</option>
-            <option value="2500">Format 2 500 F CFA</option>
-            <option value="3000">Format 3 000 F CFA</option>
-            <option value="3500">Format 3 500 F CFA</option>
-            <option value="4000">Format 4 000 F CFA</option>
-            <option value="custom">Montant personnalisé (min. 1 000 F)</option>
-        </select>
-
-        <input type="number" id="customPriceInput" placeholder="Montant en FCFA" min="1000" style="display:none;">
-
-        <!-- Option Jus Natures -->
-        <div class="drink-option">
-            <label><input type="checkbox" id="addDrink"> Ajouter un Jus Nature (+250 F CFA/bouteille)</label>
-            <input type="number" id="drinkQty" value="1" min="1" style="display:none;">
-        </div>
-
-        <button onclick="addToCart()">Ajouter au panier 🛒</button>
-    </div>
-</div>
 </body>
 </html>
