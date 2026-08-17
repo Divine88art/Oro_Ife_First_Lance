@@ -163,22 +163,30 @@ if (typeof addSuccessListener !== "undefined") {
         // Afficher la confirmation à l'écran
         afficherConfirmationCommande(transactionId);
 
-        // Redirection WhatsApp
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
+        // Redirection WhatsApp 
+// Méthode recommandée (Redirige vers l'appli sur mobile, et Web sur PC)
+const whatsappUrl = `https://wa.me/${numeroResto}?text=${encodeURIComponent(messageTexte)}`;
+
+// OU pour forcer l'ouverture directe de l'application mobile (deep link) :
+ const whatsappUrl = `whatsapp://send?phone=${numeroResto}&text=${encodeURIComponent(messageTexte)}`;
         setTimeout(() => {
             window.location.href = whatsappUrl;
         }, 2000);
     });
 }
 
-function afficherConfirmationCommande(id) {
+function afficherConfirmationCommande(id, whatsappUrl) {
     const conteneur = document.querySelector("#checkout-container");
     if (conteneur) {
         conteneur.innerHTML = `
             <div style="text-align: center; padding: 30px;">
                 <h2 style="color: #2ea44f;">Commande confirmée & payée ! 🎉</h2>
-                <p style="margin: 15px 0;">Référence de la transaction : <strong>${id}</strong></p>
-                <p>Vous allez être redirigé vers WhatsApp pour finaliser l'envoi de votre reçu...</p>
+                <p style="margin: 15px 0;">Référence : <strong>${id}</strong></p>
+                <p style="margin-bottom: 20px;">Si la redirection vers WhatsApp ne se fait pas automatiquement :</p>
+                
+                <a href="${whatsappUrl}" class="btn-submit" style="display: inline-block; text-decoration: none;">
+                    Envoyer le reçu sur WhatsApp 💬
+                </a>
             </div>
         `;
     }
