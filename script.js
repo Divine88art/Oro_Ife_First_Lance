@@ -25,7 +25,38 @@ const dishesData = {
 };
 
 let selectedDish = null;
-let currentCartItem = null;
+let cartItems = [];
+
+function renderCart() {
+    const cartContainer = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const total = cartItems.reduce((sum, item) => sum + item.totalPrice, 0);
+    const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+    cartCount.innerText = `${itemCount} ${itemCount === 1 ? 'article' : 'articles'}`;
+    document.getElementById('totalAmount').innerText = `${total.toLocaleString()} FCFA`;
+
+    if (!cartItems.length) {
+        cartContainer.innerHTML = '<p class="empty-cart">Votre panier est vide. Choisissez un plat pour commencer.</p>';
+        return;
+    }
+
+    cartContainer.innerHTML = cartItems.map((item, index) => `
+        <div class="cart-row">
+            <div>
+                <strong>${item.name}</strong>
+                <small>${item.quantity} x ${item.unitPrice.toLocaleString()} F${item.drinkDetails}</small>
+            </div>
+            <span class="cart-price">${item.totalPrice.toLocaleString()} F</span>
+            <button type="button" class="remove-item" onclick="removeFromCart(${index})" aria-label="Supprimer ${item.name}">&times;</button>
+        </div>
+    `).join('');
+}
+
+function removeFromCart(index) {
+    cartItems.splice(index, 1);
+    renderCart();
+}
 
 // --- GESTION DU MODAL ---
 function openDishModal(dishKey) {
@@ -87,14 +118,15 @@ function addToCart() {
 
     const totalItemPrice = itemPrice + drinkPrice;
 
-    currentCartItem = {
+    cartItems.push({
         name: selectedDish.name,
-        price: itemPrice,
+        unitPrice: itemPrice,
+        quantity: 1,
         drinkDetails: drinkDetails,
         totalPrice: totalItemPrice
-    };
+    });
 
-    document.getElementById('totalAmount').innerText = `${totalItemPrice.toLocaleString()} FCFA`;
+    renderCart();
     closeDishModal();
 }
 
@@ -102,17 +134,17 @@ function addToCart() {
 document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    if (!currentCartItem) {
+    if (!cartItems.length) {
         alert("Veuillez sélectionner au moins un plat avant de valider votre commande.");
         return;
     }
 
     const nom = document.getElementById('nom').value.trim();
     const telephone = document.getElementById('telephone').value.trim();
-    const heure = document.getElementById('heure').value;
+    const total = cartItems.reduce((sum, item) => sum + item.totalPrice, 0);
 
     openKkiapayWidget({
-        amount: currentCartItem.totalPrice,
+        amount: total,
         position: "center",
         callback: "",
         data: nom,
@@ -128,17 +160,20 @@ addSuccessListener(function(response) {
     const heure = document.getElementById('heure').value;
     const numeroResto = "2290198567898"; // Ton numéro WhatsApp avec indicatif
 
+    const total = cartItems.reduce((sum, item) => sum + item.totalPrice, 0);
+    const detailsCommande = cartItems.map(item =>
+        `🍽️ *${item.name}* - ${item.quantity} x ${item.unitPrice} FCFA${item.drinkDetails}\n`
+    ).join('');
+
     const messageTexte = `*NOUVELLE COMMANDE ORO IFE FOODS* 🍲\n` +
         `--------------------------------\n` +
         `👤 *Client :* ${nom}\n` +
         `📞 *Contact :* ${telephone}\n` +
         `⏰ *Heure de retrait :* ${heure}\n` +
         `--------------------------------\n` +
-        `🍽️ *Plat :* ${currentCartItem.name}\n` +
-        `💰 *Format :* ${currentCartItem.price} FCFA\n` +
-        `${currentCartItem.drinkDetails ? '🥤 *Boisson :*' + currentCartItem.drinkDetails + '\n' : ''}` +
+        detailsCommande +
         `--------------------------------\n` +
-        `💳 *Total Payé :* ${currentCartItem.totalPrice} FCFA\n` +
+        `💳 *Total Payé :* ${total} FCFA\n` +
         `🆔 *Ref Transaction :* ${response.transactionId}`;
 
     // Utilisation du lien natif wa.me sans blocage pop-up

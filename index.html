@@ -12,9 +12,14 @@
     <!-- 1. HERO SECTION -->
     <section id="hero" class="hero-section">
         <div class="hero-content">
-            <span class="badge">👨‍🍳 Bienvenue à ORO IFE Foods</span>
+            <div class="brand-mark" aria-label="Oro Ife Foods">OIF</div>
+            <span class="badge">Cuisine béninoise & africaine</span>
             <h1>Une cuisine authentique, livrée ou à emporter</h1>
             <p>Commandez vos plats préférés en quelques clics et gagnez du temps.</p>
+            <div class="service-note">
+                <span>Ouvert mar. à dim.</span>
+                <strong>11h à 23h</strong>
+            </div>
             <button id="startBtn" class="btn-primary">Découvrir le Menu & Commander 🍲</button>
         </div>
     </section>
@@ -91,6 +96,16 @@
                     <div class="form-group">
                         <label for="heure">Heure de retrait souhaitée</label>
                         <input type="time" id="heure" required>
+                    </div>
+
+                    <div class="cart-summary">
+                        <div class="cart-heading">
+                            <h3>Votre panier</h3>
+                            <span id="cartCount">0 article</span>
+                        </div>
+                        <div id="cartItems" class="cart-items">
+                            <p class="empty-cart">Votre panier est vide. Choisissez un plat pour commencer.</p>
+                        </div>
                     </div>
 
                     <div class="total-box">
